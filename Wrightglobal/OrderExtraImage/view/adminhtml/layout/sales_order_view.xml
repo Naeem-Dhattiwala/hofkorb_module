@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="sales_order_tabs">
+            <block class="Wrightglobal\OrderExtraImage\Block\Adminhtml\Orderedit\Tab\View" name="sales_order_extra_image"/>
+        	<action method="addTab">
+            	<argument name="name" xsi:type="string">Images</argument>
+            	<argument name="block" xsi:type="string">sales_order_extra_image</argument>
+        	</action>
+        </referenceBlock>
+        <referenceBlock name="sales_order_extra_image">
+            <uiComponent name="sales_order_extra_image_grid"/>
+        </referenceBlock>
+    </body>
+</page>

@@ -1,0 +1,22 @@
+{
+    "name": "hofkorb/module-filter",
+    "description": "",
+    "type": "magento2-module",
+    "license": "OSL-3.0",
+    "authors": [
+        {
+            "name": "CloudLab",
+            "email": "info@cloudlab.ag"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Hofkorb\\Filter\\": ""
+        }
+    }
+}

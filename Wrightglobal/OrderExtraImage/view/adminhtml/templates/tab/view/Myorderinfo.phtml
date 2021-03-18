@@ -1,0 +1,59 @@
+<?php
+    $order = $block->getOrderitems();
+    $orderItems = $order->getAllItems();
+    $collection = $block->getOrderImageCollection();
+?>
+<div class="fieldset-wrapper order-information">
+    <div class="fieldset-wrapper-title">
+        <span class="title"><?php echo __('Add Extra Images') ?></span>
+    </div>
+    <form action="<?php echo $block->getFormAction()?>" method="post" enctype="multipart/form-data" data-hasrequired="<?php echo __('* Required Fields') ?>" data-mage-init='{"validation":{}}'>
+        <fieldset class=fieldset>
+            <input type="hidden" name="form_key" value="<?=$block->getFormKey()?>">
+            <input type="hidden" name="order_id" value="<?=$block->getOrderId()?>">
+            <div class="field order items">
+                <label class=label for=order_image><span><?= $block->escapeHtml(__('Add Order Item')) ?></span></label>
+                <div class=control>
+                    <select id="order_itemid" name="order_itemid" data-validate="{required:true}">
+                        <option value="">Please Select</option>
+                        <?php 
+                            foreach ($orderItems as $item)
+                            {
+                                ?>
+                                <option value="<?=$item->getId()?>"><?php echo $item->getId().'---'.$item->getName();?></option>
+                                <?php
+                            }
+                        ?>
+                    </select>
+                </div>
+            </div>
+            <br><br>
+            <div class="field filesubmission">
+                <label class=label for=filesubmission><span><?= $block->escapeHtml(__('File Attachment')) ?></span></label>
+                <div class=control>
+                    <input name="order_featured_image[]" id="order_featured_image" title="<?= $block->escapeHtmlAttr(__('Attachment')) ?>"  class="input-file" type="file" accept="image/*" multiple="multiple" data-validate="{required:true}"/>
+                </div>
+            </div>
+        </fieldset>
+        <br><br>
+        <input type="submit" value="Submit">
+    </form>
+</div>
+<br>
+<div>
+<?php
+    foreach ($collection as $value) {
+        if($value->getOrder_id() == $block->getOrderId()){
+            foreach ($orderItems as $item){
+                if($value->getOrder_itemid() == $item->getId()){
+                    $image = $block->getMediaUrl().'order/images/'.$value->getOrder_featured_image();
+                    echo $item->getName();
+                    echo "<br>";
+                    echo '<img src="'.$image.'" height="100" width="100">';
+                    echo "<br>";
+                }
+            }
+        }
+    } 
+?>
+</div>

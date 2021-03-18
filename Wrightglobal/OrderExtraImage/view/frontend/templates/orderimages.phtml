@@ -1,0 +1,22 @@
+<?php
+    $order = $block->getOrderitems();
+    $orderItems = $order->getAllItems();
+    $collection = $block->getOrderImageCollection();
+?>
+<div>
+<?php
+    foreach ($collection as $value) {
+        if($value->getOrder_id() == $block->getOrderId()){
+            foreach ($orderItems as $item){
+                if($value->getOrder_itemid() == $item->getId()){
+                    $image = $block->getMediaUrl().'order/images/'.$value->getOrder_featured_image();
+                    echo $item->getName();
+                    echo "<br>";
+                    echo '<img src="'.$image.'" height="100" width="100">';
+                    echo "<br>";
+                }
+            }
+        }
+    } 
+?>
+</div>
