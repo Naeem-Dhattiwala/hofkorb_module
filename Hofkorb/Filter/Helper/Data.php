@@ -9,7 +9,7 @@ namespace Hofkorb\Filter\Helper;
 
 use Magento\Framework\App\Helper\AbstractHelper;
 
-class Data extends AbstractHelper
+class Data1 extends AbstractHelper
 {
 
 }
